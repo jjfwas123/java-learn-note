@@ -1,0 +1,2 @@
+./nignx -s reload 重新加载配置文件
+include /etc/nginx/sites-enabled/*;包含其他配置文件

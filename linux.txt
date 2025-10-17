@@ -1,0 +1,36 @@
+grep 'search content' filename -a 以文本形式输出搜索 -C50输出上下50行 -B50显示前50行 -A50后面50行
+cat /dev/null > filename.log 清空文件
+history | grep '关键字' 搜索历史命令
+netstat -tulnp | grep '端口号' 搜索端口
+Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1234/sshd
+tcp6       0      0 :::80                   :::*                    LISTEN      5678/nginx
+udp        0      0 0.0.0.0:68              0.0.0.0:*                           910/dhclient
+ps -ef | grep 'process name' 搜索进程 前面一个是进程id，后面一个是父进程id，后面添加| grep -v grep可过滤grep自身的进程
+pgrep <进程名> 直接显示进程id
+du -sh * 查看当前文件夹下的信息
+find / -name '*.log' 搜索文件
+df -h 查看磁盘空间
+ip a 查看当前ip ifconfig ip addr show
+tail -f 循环读取 filename  -n<行数>（输入你想要输出到屏幕上的行数）
+less file.txt；g/G：跳转文件首/尾；-N显示行号；空格键向下翻页；b键向上翻页；F键类似 tail -f，实时查看文件变化；按下 / 键进行搜索；
+iptables -L 查看防火墙设置
+tar -xzvf file.zip 解压
+tar -czvf file.zip folder/ 压缩folder文件夹
+ps –e –o “%C:%p:%z:%a”|sort –nr cpu利用率从大到小
+pwd 显示当前目录
+cp -r origin target 复制
+uname -a 显示内核和系统架构
+hostnamectl 显示操作系统
+who 查看当前登录用户
+free显示当前内存使用情况
+tail 显示文件末尾
+top 查看系统资源
+passwd username 修改username的密码
+nohup Command [ Arg ... ] & 确保在终端关闭后继续运行
+top查看cpu内存占用率
+touch filename 创建文件
+mkdir -p /dir1/dir2 自动创建子目录或父目录
+mv 命令用于移动文件和目录，但也可以用来重命名文件 mv oldname.txt newname.txt相当于剪切
+zr -E 上传文件
+sz下载文件

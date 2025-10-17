@@ -1,0 +1,1 @@
+创建普通app，非web项目使用maven-archetype-quickstart

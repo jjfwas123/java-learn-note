@@ -1,0 +1,15 @@
+utf8的字节是变长的
+// 统计包含特殊字符串长度
+String s="中文sss,1232131123123/312/n\n$$€€€€€€";
+System.out.printn(s.getBytes(StandardCharsets.UTF_8).length);
+
+//把字符串转换为utf-8然后统计字数
+byte[] bytes = str.getBytes("UTF-8");
+int length = bytes.length / 3; 
+
+hutool RandomUtil生成随机字符串
+
+@ComponentScan(basePackages = {"com.your.package.config"}) 扫描配置类
+@Import(com.biz.crm.config.MultipartConfig.class) 指定配置类
+
+@EnableScheduling springboot定时任务，需要在使用类方法上@Scheduled(cron = "0/5 * * * * ?")，且类必须是Bean；
