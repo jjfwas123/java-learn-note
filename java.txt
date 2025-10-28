@@ -13,3 +13,5 @@ hutool RandomUtil生成随机字符串
 @Import(com.biz.crm.config.MultipartConfig.class) 指定配置类
 
 @EnableScheduling springboot定时任务，需要在使用类方法上@Scheduled(cron = "0/5 * * * * ?")，且类必须是Bean；
+
+CountDownLatch 内置计数器初始化后，通过await()阻塞主线程，子线程执行countDown()逐步递减计数，归零后唤醒阻塞线程。‌‌

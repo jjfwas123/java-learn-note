@@ -2,3 +2,12 @@
 使用sql改用户密码ALTER USER 'root'@'localhost' IDENTIFIED BY 'Gy@crm2005'; 某些版本数据库可能需要将localhost改为%
 ALTER USER或SET PASSWORD等命令只影响后续的新连接，不会终止现有连接。
 ./mysqladmin -uxxx -pxxx flush-hosts刷新登陆数据库登陆错误的锁定
+explain查看分析SQL执行计划 explain select * from xxtable
+INNER JOIN求两表的交集，仅匹配成功的行
+LEFT JOIN左表所有行 + 右表匹配的行 (不匹配则右表为NULL)
+RIGHT JOIN右表所有行 + 左表匹配的行 (不匹配则左表为NULL)
+RIGHT JOIN 完全可以被 LEFT JOIN 替代，你只需要在写SQL时把两个表的顺序调换一下即可。所以很多开发者和规范会倾向于主要使用 INNER JOIN 和 LEFT JOIN，以使代码更统一和易读。
+联合索引中包含了多个字段，所以不能像单值索引那样直接使用就行。最左前缀原则：带头大哥不能死，中间兄弟不能断。
+is null，is not null 无法使用索引
+SELECT COUNT(1) FROM SFA_VISIT_PLAN_INFO_EXECUTE 统计行数
+字符集设为utf8-mb4更合适，是utf8的超集，支持4字节字符如emoji、生僻汉字，包含全部unicode编码范围内；mysql中utf8仅支持最多3字节的字符；‌性能影响‌：存储空间略大于utf8，但现代硬件下差异可忽略；
