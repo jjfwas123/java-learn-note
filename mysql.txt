@@ -10,4 +10,6 @@ RIGHT JOIN 完全可以被 LEFT JOIN 替代，你只需要在写SQL时把两个�
 联合索引中包含了多个字段，所以不能像单值索引那样直接使用就行。最左前缀原则：带头大哥不能死，中间兄弟不能断。
 is null，is not null 无法使用索引
 SELECT COUNT(1) FROM SFA_VISIT_PLAN_INFO_EXECUTE 统计行数
-字符集设为utf8-mb4更合适，是utf8的超集，支持4字节字符如emoji、生僻汉字，包含全部unicode编码范围内；mysql中utf8仅支持最多3字节的字符；‌性能影响‌：存储空间略大于utf8，但现代硬件下差异可忽略；
+字符集设为utf8-mb4更合适，是utf8的超集，支持4字节字符如emoji、生僻汉字，包含全部unicode编码范围内；mysql中utf8仅支持最多3字节的字符；‌性能影响‌：存储空间略大于utf8，但现代硬件下差异可忽略；CHARACTER SET utf8mb4；客户端连接需设置charset=utf8mb4避免乱码；
+回表：条件过滤完成后，再回到数据页去查找需要输出的字段；将查询条件和输出字段建立联合索引，可以避免回表发生；
+索引优先使用区分度更大的字段
