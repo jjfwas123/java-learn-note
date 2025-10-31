@@ -1,6 +1,7 @@
 改账户密码./mysqladmin -uroot -pMaenx92HK+kk password 'Gy@crm2005' MySQL在客户端初次连接时进行认证，之后连接保持活动状态。密码验证只在连接建立时进行一次。
 使用sql改用户密码ALTER USER 'root'@'localhost' IDENTIFIED BY 'Gy@crm2005'; 某些版本数据库可能需要将localhost改为%
 ALTER USER或SET PASSWORD等命令只影响后续的新连接，不会终止现有连接。
+ALTER TABLE 表名 ADD 列名 数据类型 DEFAULT default_value COMMENT '注释';
 ./mysqladmin -uxxx -pxxx flush-hosts刷新登陆数据库登陆错误的锁定
 explain查看分析SQL执行计划 explain select * from xxtable
 INNER JOIN求两表的交集，仅匹配成功的行
