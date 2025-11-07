@@ -15,3 +15,5 @@ hutool RandomUtil生成随机字符串
 @EnableScheduling springboot定时任务，需要在使用类方法上@Scheduled(cron = "0/5 * * * * ?")，且类必须是Bean；
 
 CountDownLatch 内置计数器初始化后，通过await()阻塞主线程，子线程执行countDown()逐步递减计数，归零后唤醒阻塞线程。‌‌
+
+当修改字段的时候，mapper，entity，dto都需要同步修改。否则就会报错

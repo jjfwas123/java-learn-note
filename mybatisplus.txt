@@ -1,0 +1,1 @@
+使用实体类更新数据库时默认不更新空值。想要更新空值有三种方法：1、使用注解@TableField(updateStrategy = FieldStrategy.IGNORED)指定特定字段支持空值更新；2、使用UpdateWrapper，yourService.update(Wrappers.<YourEntity>lambdaUpdate()<br> .set(YourEntity::getYourField, null)<br> .eq(YourEntity::getId, entityId));3、配置全局更新策略mybatis-plus: global-config: db-config: update-strategy: ignored；

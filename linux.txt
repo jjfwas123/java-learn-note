@@ -1,7 +1,7 @@
 grep 'search content' filename -a 以文本形式输出搜索 -C50输出上下50行 -B50显示前50行 -A50后面50行
 cat /dev/null > filename.log 清空文件
 history | grep '关键字' 搜索历史命令
-netstat -tulnp | grep '端口号' 搜索端口
+netstat -tulnp | grep '端口号' 搜索网络端口
 Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name
 tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1234/sshd
 tcp6       0      0 :::80                   :::*                    LISTEN      5678/nginx
