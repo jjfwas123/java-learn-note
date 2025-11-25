@@ -1,4 +1,42 @@
-addWaterMark(tempFilePath, waterMark) {
+measureLineCount(ctx, textGroup, maxTextWidth) {
+      let lineCount = 0, oneWordHeight = 0
+      textGroup.forEach(str => {
+        let lineWidth = 0
+        lineCount++
+        for(let i = 0; i < str.length; i++) {
+          lineWidth += ctx.measureText(str[i]).width;
+          oneWordHeight = Math.max(oneWordHeight, ctx.measureText(str[i]).actualBoundingBoxAscent + ctx.measureText(str[i]).actualBoundingBoxDescent)
+          if (lineWidth > maxTextWidth) { 
+            lineCount++
+            lineWidth = 0
+          }
+        }
+      })
+      return { lineCount, oneWordHeight }
+    },
+    renderWrapText(ctx, textGroup, maxTextWidth, textHeight) {
+      textGroup.forEach((str) => { 
+        let lineWidth = 0,
+        lastSubStrIndex = 0
+        for (let i = 0; i < str.length; i++) { 
+          lineWidth += ctx.measureText(str[i]).width;
+          if (lineWidth > maxTextWidth) {
+            // 第一行
+            ctx.fillText(str.substring(lastSubStrIndex, i), 30, textHeight); //绘制截取部分
+            textHeight += 40 //40为字体的高度
+            lineWidth = 0;
+            lastSubStrIndex = i;
+          }
+          if (i == str.length - 1) { //绘制剩余部分
+            // 第三行
+            ctx.fillText(str.substring(lastSubStrIndex, i + 1), 30, textHeight);
+            textHeight += 40
+          }
+        }
+      })
+    },
+    // 图片添加水印
+    addWaterMark(tempFilePath, waterMark) {
       let that = this
       return new Promise((resolve, reject) => {
         let query = wx.createSelectorQuery().in(this)
@@ -32,31 +70,24 @@ addWaterMark(tempFilePath, waterMark) {
                   const it = textGroup[i]
                   if (!it.trim()) textGroup.splice(i, 1);
                 }
-                let bHeihgt = textGroup.length * 60 + 30, bWidth = imageWidth
+                let oneWordHeight = 0, bHeihgt = oneWordHeight * 2, bWidth = imageWidth, lineCount = 0
+                let tHeight, maxTextWidth = imageWidth - 60
+                let measureRes = this.measureLineCount(ctx, textGroup, maxTextWidth)
+                oneWordHeight = measureRes.oneWordHeight
+                lineCount = measureRes.lineCount
+                oneWordHeight = oneWordHeight * 1.3
+                bHeihgt = oneWordHeight * 2
+                console.log('oneWordHeight', oneWordHeight)
+                console.log('line count', lineCount)
+                bHeihgt += lineCount * oneWordHeight
+                tHeight = imageHeight - bHeihgt + 60
                 ctx.rect(0, imageHeight - bHeihgt, bWidth, bHeihgt)
                 ctx.stroke();
                 ctx.fillStyle = "rgba(71, 71, 71, 0.56)";
                 ctx.fill();
                 ctx.save();
                 ctx.fillStyle = 'white';
-                let tHeight = imageHeight - bHeihgt + 60,maxTextWidth = imageWidth - 60
-                textGroup.forEach((str) => { 
-                  let lineWidth = 0
-                  let lastSubStrIndex = 0;
-                  for (let i = 0; i < str.length; i++) { 
-                    lineWidth += ctx.measureText(str[i]).width;
-                    if (lineWidth > maxTextWidth) {
-                      ctx.fillText(str.substring(lastSubStrIndex, i), 30, tHeight); //绘制截取部分
-                      tHeight += 40 //40为字体的高度
-                      lineWidth = 0;
-                      lastSubStrIndex = i;
-                    }
-                    if (i == str.length - 1) { //绘制剩余部分
-                      ctx.fillText(str.substring(lastSubStrIndex, i + 1), 30, tHeight);
-                      tHeight += 40
-                    }
-                  }
-                })
+                this.renderWrapText(ctx, textGroup, maxTextWidth, tHeight)
   
                 // 将 canvas 导出成临时图片文件
                 setTimeout(() => {

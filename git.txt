@@ -9,3 +9,4 @@ git reset <commit-hash>重置提交到指定版本
 git remote prune origin 清理无效的远程分支引用
 git config user.name "新用户名" 更换用户名
 git commit –allow-empty-message命令实现无记录提交
+git reflog 记录了本地仓库中所有引用的变更历史，包括分支删除。
