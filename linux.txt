@@ -34,3 +34,11 @@ mkdir -p /dir1/dir2 自动创建子目录或父目录
 mv 命令用于移动文件和目录，但也可以用来重命名文件 mv oldname.txt newname.txt相当于剪切
 zr -E 上传文件
 sz下载文件
+firewall-cmd --state 查看防火墙状态
+firewall-cmd --list-all 查看所有配置
+firewall-cmd --zone=public --add-port=8080/tcp 添加端口 --permanent 永久模式，重启后不失效
+firewall-cmd --reload 需要重新加载防火墙规则
+iptables -P INPUT DROP 将INPUT链的默认策略设置为DROP，这意味着所有未匹配规则的数据包都会被丢弃。
+iptables -A INPUT -i lo -j ACCEPT 本地回环接口（lo）用于系统内部的通信，我们需要允许它的流量通过
+iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT 允许IP地址为192.168.1.100的主机通过TCP协议访问服务器的22号端口（SSH服务）
+sudo iptables -L INPUT 查看特定链的规则
