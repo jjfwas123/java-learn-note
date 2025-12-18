@@ -46,3 +46,4 @@ iptables -A INPUT -s 192.168.1.100 -p tcp --dport 22 -j ACCEPT 允许IP地址为
 sudo iptables -L INPUT 查看特定链的规则
 sudo journalctl -u alertmanager 查看systemctl启动失败日志 -f 实时查看
 chmod +x ./xxxx 赋予执行权限
+whereis xxx查询软件安装目录
