@@ -1,2 +1,22 @@
 删除文档：/索引名/type名/id值 方法 delete 数据体为空就行
-查询文档：GET /索引名/_search 数据体为查询条件
+
+查询文档：GET /索引名/_search 数据体为查询条件,一个match只能放一个field
+{
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "match": {
+            "cusCode": "27019999"
+          }
+        },
+        {
+          "match": {
+            "productCode": "42750002"
+          }
+        }
+      ]
+    }
+    
+  }
+}

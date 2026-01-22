@@ -14,3 +14,6 @@ SELECT COUNT(1) FROM SFA_VISIT_PLAN_INFO_EXECUTE 统计行数
 字符集设为utf8-mb4更合适，是utf8的超集，支持4字节字符如emoji、生僻汉字，包含全部unicode编码范围内；mysql中utf8仅支持最多3字节的字符；‌性能影响‌：存储空间略大于utf8，但现代硬件下差异可忽略；CHARACTER SET utf8mb4；客户端连接需设置charset=utf8mb4避免乱码；
 回表：条件过滤完成后，再回到数据页去查找需要输出的字段；将查询条件和输出字段建立联合索引，可以避免回表发生；
 索引优先使用区分度更大的字段
+count(*)和count（1）在大部分情况下没区别，少部分引擎会对count（1）有优化，会计算包含null的行
+COUNT(列名)：统计特定列中非 NULL 值的数量
+COUNT(DISTINCT 列名)：统计某列中不重复的非 NULL 值的数量
