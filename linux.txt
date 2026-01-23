@@ -15,7 +15,7 @@ find / -name '*.log' 搜索文件
 df -h 查看已挂载的磁盘空间 -a查看全部磁盘空间
 ip a 查看当前ip ifconfig ip addr show
 tail -f 循环读取 filename  -n<行数>（输入你想要输出到屏幕上的行数）
-less file.txt；g/G：跳转文件首/尾；-N显示行号；空格键向下翻页；b键向上翻页；F键类似 tail -f，实时查看文件变化；按下 / 键进行搜索；
+less file.txt；g/G：跳转文件首/尾；-N显示行号；空格键向下翻页；b键向上翻页；F键类似 tail -f，实时查看文件变化；按下 / 键进行搜索；-r 强制以文本模式打开
 nmap -p 80 example.com 测试端口是否正常
 telnet example.com 80 测试端口是否正常
 tar -xzvf file.zip 解压
