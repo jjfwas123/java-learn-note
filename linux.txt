@@ -48,3 +48,4 @@ sudo iptables -L INPUT 查看特定链的规则
 sudo journalctl -u alertmanager 查看systemctl启动失败日志 -f 实时查看
 chmod +x ./xxxx 赋予执行权限
 whereis xxx查询软件安装目录
+ctrl+z将当前命令放入后台并返回终端，再通过ps查询pid，使用kill -9强制终止
