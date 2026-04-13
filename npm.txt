@@ -1,0 +1,3 @@
+npm config set registry https://registry.npmmirror.com 设置淘宝镜像
+npm i lerna@3.22.1 -g
+npm i @taro/cli@3.3.2 -g

@@ -1,0 +1,11 @@
+#标题
+`代码块
+*无序列表
+1.2.有序列表
+>区块
+* - _分割线这3个符号的至少3个符号表示
+[foo]: http://example.com/ "Optional Title Here"链接
+![foo]: http://example.com/ 图片
+| name | age | sex | 表格
+|:------:|:------|-----:| 表头
+\转义
