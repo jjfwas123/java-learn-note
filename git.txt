@@ -12,3 +12,6 @@ git commit –allow-empty-message命令实现无记录提交
 git reflog 记录了本地仓库中所有引用的变更历史，包括分支删除。
 git config --system core.longpaths true 允许处理超长文件名
 git config --global core.ignorecase false 不忽略大小写
+git merge --abort 取消合并
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser powershell允许脚本远程执行
+
